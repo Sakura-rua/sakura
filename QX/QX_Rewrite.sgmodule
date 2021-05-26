@@ -1,11 +1,11 @@
 hostname = %APPEND% trade-acs.m.taobao.com, api.m.jd.com, *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com
 
 # 京东比价
-http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/jd_price_mz.js
+#http-response ^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/jd_price_mz.js
 
 # 淘宝比价
-http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/tb_price_mz.js
-http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/tb_price_mz.js
+#http-request ^http://.+/amdc/mobileDispatch requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/tb_price_mz.js
+http-response ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail #requires-body=1,script-path=https://raw.githubusercontent.com/Mazeorz/QuantumultX/main/Scripts/tb_price_mz.js
 
 #YouTube去广告
 (^https?:\/\/[\w-]+\.googlevideo\.com\/.+)(ctier=L)(&.+) url 302 $1$3

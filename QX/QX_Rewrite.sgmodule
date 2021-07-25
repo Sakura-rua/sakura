@@ -1,4 +1,4 @@
-hostname = %APPEND% trade-acs.m.taobao.com, api.m.jd.com, *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com
+hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com
 
 # 京东比价
 
@@ -11,7 +11,7 @@ hostname = %APPEND% trade-acs.m.taobao.com, api.m.jd.com, *.googlevideo.com, mb3
 ^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier) url reject
 
 # > embyUnlocked. (By KleinerSource)
-
+https://raw.githubusercontent.com/saintartoria/Paoche/main/emby/embyUnlocked.conf
 
 #BoxJs.net
 ^https?://boxjs.net url script-analyze-echo-response https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js

@@ -11,7 +11,7 @@ hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.app
 ^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier) url reject
 
 # > embyUnlocked. (By KleinerSource)
-^https:\/\/mb3admin\.com\/admin\/service(\/registration\/validateDevice|\/appstore\/register|\/registration\/validate|\/registration\/getStatus|\/supporter\/retrievekey) url script-echo-response https://raw.githubusercontent.com/saintartoria/Paoche/main/emby/embyPremiere.js
+#^https:\/\/mb3admin\.com\/admin\/service(\/registration\/validateDevice|\/appstore\/register|\/registration\/validate|\/registration\/getStatus|\/#supporter\/retrievekey) url script-echo-response https://raw.githubusercontent.com/saintartoria/Paoche/main/emby/embyPremiere.js
 
 #BoxJs.net
 ^https?://boxjs.net url script-analyze-echo-response https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js

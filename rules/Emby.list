@@ -1,6 +1,6 @@
 # emby
-connect.emby.media
-mb3admin.com
+DOMAIN,connect.emby.media
+DOMAIN,mb3admin.com
 
 # 
 DOMAIN,emby.immtel.com

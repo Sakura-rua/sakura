@@ -3,7 +3,7 @@
 <h4 align="center">一个可以显示还需要摸鱼多少天的面板 </h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Timecard/img/Timecard.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Timecard/img/Timecard.PNG" width="300"></img>
 </p>
 
 ## 功能
@@ -18,7 +18,7 @@
 >**TestFlight 版 4.11.0 (2014) 或更新版本**
 
 ### 2. 模块安装链接
-> **稳定版 :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Timecard/Moore/Timecard.sgmodule<br>
+> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Timecard/Moore/Timecard.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 新建本地模块 -> 复制粘贴上方的安装链接里的模块内容到本地（不是复制链接！） -> 在Script中必须修改的参数：group：你策略组的名称 -> 完成!
@@ -36,8 +36,3 @@
 **Rabbit-Spec<br>
 
 __以上順序不分排名__
-
-## 我用的机场
-**我用着好用不代表你用着也好用，如果想要入手的话，建议先买一个月体验一下。**<br>
-[「Nexitally」佩奇家主站，一家全线中转线路的高端机场。](https://naixii.com/signupbyemail.aspx?MemberCode=0b532ff85dda43e595fb1ae17843ae6d20211110231626) <br>
-[「Blinkload」主要是 IEPL&BGP 中转，稳定性和速度都很不错。](https://blinkload.to/aff/CLnL) <br>

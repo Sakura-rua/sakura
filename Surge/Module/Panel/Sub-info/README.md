@@ -20,7 +20,7 @@
 >**TestFlight 版 4.11.0 (2014) 或更新版本**
 
 ### 2. 模块安装链接
-> **稳定版 :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Sub-info/Moore/Sub-info.sgmodule<br>
+> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Sub-info/Moore/Sub-info.js<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 新建本地模块 -> 复制粘贴上方的安装链接里的模块内容到本地（不是复制链接！）-> 先将带有流量信息的节点订阅链接encode，用encode后的链接替换"url="后面的[机场节点链接] -> 完成!
@@ -38,10 +38,3 @@
 ## 共同作者
 **mieqq<br>
 **Rabbit-Spec<br>
-
-__以上順序不分排名__
-
-## 我用的机场
-**我用着好用不代表你用着也好用，如果想要入手的话，建议先买一个月体验一下。**<br>
-[「Nexitally」佩奇家主站，一家全线中转线路的高端机场。](https://naixii.com/signupbyemail.aspx?MemberCode=0b532ff85dda43e595fb1ae17843ae6d20211110231626) <br>
-[「Blinkload」主要是 IEPL&BGP 中转，稳定性和速度都很不错。](https://blinkload.to/aff/CLnL) <br>

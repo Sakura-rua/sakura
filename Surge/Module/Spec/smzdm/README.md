@@ -19,7 +19,7 @@
 
 
 ### 2. 模块安装链接
-> **稳定版 :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/smzdm/Moore/smzdm.sgmodule<br>
+> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/smzdm/Moore/smzdm.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 安装新模块... -> 复制粘贴上方的安装链接 -> 完成!
@@ -49,8 +49,3 @@
 
 #### 若什么值得买模块失效可以联系作者
 - [@blackmatrix7](https://github.com/blackmatrix7)
-
-## 我用的机场
-**我用着好用不代表你用着也好用，如果想要入手的话，建议先买一个月体验一下。**<br>
-[「Nexitally」佩奇家主站，一家全线中转线路的高端机场。](https://naixii.com/signupbyemail.aspx?MemberCode=0b532ff85dda43e595fb1ae17843ae6d20211110231626) <br>
-[「Blinkload」主要是 IEPL&BGP 中转，稳定性和速度都很不错。](https://blinkload.to/aff/CLnL) <br>

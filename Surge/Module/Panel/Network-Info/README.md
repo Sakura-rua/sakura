@@ -19,8 +19,7 @@
 >**TestFlight 测试版 4.11.0 (2014) 或更新版本**
 
 ### 2. 模块安装链接
-> **简体中文正式版 :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info/Moore/Network-Info.sgmodule<br>
-> **繁体中文正式版 :** https://raw.githubusercontent.com/Nebulosa-Cat/Surge/main/Panel/Network-Info/Network-Info.sgmodule<br>
+> **简体中文正式版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Network-Info/Moore/Network-Info.sgmodule<br>
 
 ### 3. 安裝方式
 打开 Surge -> 模块 -> 安装新模块... -> 复制上方链接地址进行安装 -> 完成!
@@ -53,10 +52,3 @@
 > **Pysta @mieqq :** 友情协助<br>
 > 
 > **鸽子 @zZPiglet :** code 重构 <br>
-
-__以上出场排名不分先后__
-
-## 我用的机场
-**我用着好用不代表你用着也好用，如果想要入手的话，建议先买一个月体验一下。**<br>
-[「Nexitally」佩奇家主站，一家全线中转线路的高端机场。](https://naixii.com/signupbyemail.aspx?MemberCode=0b532ff85dda43e595fb1ae17843ae6d20211110231626) <br>
-[「Blinkload」主要是 IEPL&BGP 中转，稳定性和速度都很不错。](https://blinkload.to/aff/CLnL) <br>

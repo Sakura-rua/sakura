@@ -19,8 +19,8 @@
 >**TestFlight 版 5.20.0 (2433) 或更新版本**
 
 ### 2. 模块安装链接
-> **腾讯云DoH :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/DoH/Moore/DNSPod-DoH.sgmodule<br>
-> **阿里云DoH :** https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/DoH/Moore/Ali-DoH.sgmodule<br>
+> **腾讯云DoH :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/DoH/Moore/DNSPod-DoH.sgmodule<br>
+> **阿里云DoH :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/DoH/Moore/Ali-DoH.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 安装新模块... -> 复制粘贴上方的安装链接 -> 完成!
@@ -32,8 +32,3 @@
 
 ## 作者
 **Rabbit-Spec<br>
-
-## 我用的机场
-**我用着好用不代表你用着也好用，如果想要入手的话，建议先买一个月体验一下。**<br>
-[「Nexitally」佩奇家主站，一家全线中转线路的高端机场。](https://naixii.com/signupbyemail.aspx?MemberCode=0b532ff85dda43e595fb1ae17843ae6d20211110231626) <br>
-[「Blinkload」主要是 IEPL&BGP 中转，稳定性和速度都很不错。](https://blinkload.to/aff/CLnL) <br>

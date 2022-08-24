@@ -19,7 +19,7 @@
 
 
 ### 2. 模块安装链接
-> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/smzdm/Moore/smzdm.sgmodule<br>
+> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Spec/smzdm/Moore/smzdm.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 安装新模块... -> 复制粘贴上方的安装链接 -> 完成!

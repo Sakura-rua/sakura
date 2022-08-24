@@ -3,8 +3,8 @@
 <h4 align="center">还你一个干净的微博浏览体验</h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Weibo/img/1.PNG" width="300"></img>
-<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Weibo/img/2.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Weibo/img/1.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Weibo/img/2.PNG" width="300"></img>
 </p>
 
 ## 功能
@@ -20,7 +20,7 @@
 >**TestFlight 版 4.11.0 (2014) 或更新版本**
 
 ### 2. 模块安装链接
-> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Weibo/Moore/Weibo.sgmodule<br>
+> **稳定版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Weibo/Moore/Weibo.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 安装新模块... -> 复制粘贴上方的安装链接 -> 完成!

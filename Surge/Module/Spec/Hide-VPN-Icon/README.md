@@ -3,7 +3,7 @@
 <h4 align="center">隐藏状态栏VPN图标</h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/Hide-VPN-Icon/img/1.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Hide-VPN-Icon/img/1.PNG" width="300"></img>
 </p>
 
 ## 功能

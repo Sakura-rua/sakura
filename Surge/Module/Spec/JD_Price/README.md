@@ -3,8 +3,8 @@
 <h4 align="center">京东商品历史价格</h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/JD_Price/img/1.PNG" width="300"></img>
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Spec/JD_Price/img/2.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/JD_Price/img/1.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/JD_Price/img/2.PNG" width="300"></img>
 </p>
 
 ## 功能
@@ -19,8 +19,8 @@
 >**TestFlight 版 5.20.0 (2433) 或更新版本**
 
 ### 2. 模块安装链接
-> **标准版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/JD_Price/Moore/JD_Price.sgmodule<br>
-> **Lite版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/JD_Price/Moore/JD_Price-Lite.sgmodule<br>
+> **标准版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Spec/JD_Price/Moore/JD_Price.sgmodule<br>
+> **Lite版 :** https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Spec/Spec/JD_Price/Moore/JD_Price-Lite.sgmodule<br>
 
 ### 3. 安装方式
 打开 Surge -> 模块 -> 安装新模块 -> 复制粘贴上方的安装链接 -> 完成!

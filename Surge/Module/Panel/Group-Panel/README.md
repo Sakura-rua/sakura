@@ -3,7 +3,7 @@
 <h4 align="center">一个可以快速切换策略组节点的面板 </h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Group-Panel/img/Group-Panel.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-Rua/sakura/master/Surge/Module/Panel/Group-Panel/img/Group-Panel.PNG" width="300"></img>
 </p>
 
 ## 功能

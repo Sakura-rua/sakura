@@ -3,8 +3,8 @@
 <h4 align="center"> 一个基于 Surge 5 客户端展示网络信息面板工具 </h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info//img/cell.PNG" width="300"></img>
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Network-Info//img/Wi-Fi.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Network-Info//img/cell.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Network-Info//img/Wi-Fi.PNG" width="300"></img>
 </p>
 
 ## 功能

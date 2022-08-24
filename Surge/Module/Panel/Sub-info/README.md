@@ -3,7 +3,7 @@
 <h4 align="center">一个可以查看你机场剩余流量/重置流量日期/套餐到期等功能的面板 </h4>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Rabbit-Spec/Surge/Master/Module/Panel/Sub-info/img/Sub_info.PNG" width="300"></img>
+<img src="https://raw.githubusercontent.com/Sakura-rua/sakura/master/Surge/Module/Panel/Sub-info/img/Sub_info.PNG" width="300"></img>
 </p>
 
 ## 功能

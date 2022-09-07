@@ -1,23 +1,25 @@
-hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com, %APPEND% api.m.jd.com
+hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, trade-acs.m.taobao.com
 
 # 京东比价
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-analyze-echo-response https://raw.githubusercontent.com/zwf234/rules/master/js/jd_price.js
+# 比价信息显示在商品下方
+^https?://api\.m\.jd\.com/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/jd_price.js
 
 # 淘宝比价
-
+# 历史价格在“保障”中显示，需要点击“保障”才能看到，和京东不一样
+# “保障”显示在商品下方
+# 如果还是不显示，那就把app卸载重新安装
+^http://.+/amdc/mobileDispatch url script-request-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
+^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
 
 #YouTube去广告
 (^https?:\/\/[\w-]+\.googlevideo\.com\/.+)(ctier=L)(&.+) url 302 $1$3
 ^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier) url reject
 
 # > embyUnlocked. (By KleinerSource)
-#^https:\/\/mb3admin\.com\/admin\/service(\/registration\/validateDevice|\/appstore\/register|\/registration\/validate|\/registration\/getStatus|\/#supporter\/retrievekey) url script-echo-response https://raw.githubusercontent.com/saintartoria/Paoche/main/emby/embyPremiere.js
+^https:\/\/mb3admin\.com\/admin\/service(\/registration\/validateDevice|\/appstore\/register|\/registration\/validate|\/registration\/getStatus|\/supporter\/retrievekey) url script-echo-response https://subweb.s3.fr-par.scw.cloud/Script/embycrack.js
 
 #BoxJs.net
 ^https?://boxjs.net url script-analyze-echo-response https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js
 
 #sub-store
 ^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
-
-#testflight
-^https?:\/\/testflight\.apple\.com\/v2\/accounts\/.*\/apps\/\d*/builds/\d*/install url request-body storefrontId" : ".*", request-body storefrontId" : "143441-1,29",

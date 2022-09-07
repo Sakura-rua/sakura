@@ -1,7 +1,7 @@
-hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com
+hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, testflight.apple.com, %APPEND% api.m.jd.com
 
 # 京东比价
-
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig) url request-body https://raw.githubusercontent.com/zwf234/rules/master/js/jd_price.js
 
 # 淘宝比价
 

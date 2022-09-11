@@ -1,11 +1,25 @@
 {"name":"Sakura-icon","description":"Sakura の 𝐢𝐜𝐨𝐧 𝐏𝐚𝐜𝐤𝐚𝐠𝐞",
     "icons":[
-        {"name":"music","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/NeteaseMusic.png"},
         {"name":"abc","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/abc.png"},
         {"name":"cloud","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/cloud.png"},
         {"name":"no626","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/no626.png"},
         {"name":"paoche","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/paoche.png"},
         {"name":"pinyun","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/pinyun.png"},
-        {"name":"precision","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/precision.png"}
+        {"name":"precision","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/precision.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png"},
+        {"name":"music","url":"https://raw.githubusercontent.com/Sakura-rua/sakura/master/Icon/NeteaseMusic.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/gth2021/quantumultx/main/icon/hk.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/gth2021/quantumultx/main/icon/tw.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/gth2021/quantumultx/main/icon/sg.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/gth2021/quantumultx/main/icon/jp.png"},
+        {"name":"precision","url":"https://raw.githubusercontent.com/gth2021/quantumultx/main/icon/us.png"}
     ]
 }

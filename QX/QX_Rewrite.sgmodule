@@ -1,4 +1,4 @@
-hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, trade-acs.m.taobao.com
+hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, trade-acs.m.taobao.com, testflight.apple.com
 
 # 京东比价
 # 比价信息显示在商品下方
@@ -11,15 +11,18 @@ hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, 
 ^http://.+/amdc/mobileDispatch url script-request-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
 ^https?://trade-acs\.m\.taobao\.com/gw/mtop\.taobao\.detail\.getdetail url script-response-body https://raw.githubusercontent.com/yichahucha/surge/master/tb_price.js
 
-#YouTube去广告
+# YouTube去广告
 (^https?:\/\/[\w-]+\.googlevideo\.com\/.+)(ctier=L)(&.+) url 302 $1$3
 ^https?:\/\/[\w-]+\.googlevideo\.com\/.+&(oad|ctier) url reject
 
 # > embyUnlocked. (By KleinerSource)
 ^https:\/\/mb3admin\.com\/admin\/service(\/registration\/validateDevice|\/appstore\/register|\/registration\/validate|\/registration\/getStatus|\/supporter\/retrievekey) url script-echo-response https://subweb.s3.fr-par.scw.cloud/Script/embycrack.js
 
-#BoxJs.net
+# BoxJs.net
 ^https?://boxjs.net url script-analyze-echo-response https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js
 
-#sub-store
+# sub-store
 ^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
+
+# TestFlight
+^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-response-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/javascript/94e30f41890b0534a28ac4e45edb8c76.js

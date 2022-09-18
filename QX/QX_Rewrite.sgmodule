@@ -25,4 +25,4 @@ hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, 
 ^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
 
 # TestFlight
-^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-response-body https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/source/javascript/94e30f41890b0534a28ac4e45edb8c76.js
+^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js

@@ -22,7 +22,8 @@ hostname = *.googlevideo.com, mb3admin.com, boxjs.net, sub.store, api.m.jd.com, 
 ^https?://boxjs.net url script-analyze-echo-response https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js
 
 # sub-store
-^https?:\/\/sub\.store url script-analyze-echo-response https://raw.githubusercontent.com/Peng-YM/Sub-Store/master/backend/sub-store.min.js
+^^https?:\/\/sub\.store\/((download)|api\/(preview|sync|(utils\/node-info))) url script-analyze-echo-response https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-1.min.js
+^https?:\/\/sub\.store url script-analyze-echo-response https://github.com/sub-store-org/Sub-Store/releases/latest/download/sub-store-0.min.js
 
 # TestFlight
 ^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/TestFlight/TestFlightAccount.js

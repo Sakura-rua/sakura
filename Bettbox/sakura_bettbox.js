@@ -186,6 +186,7 @@
   const groupBaseOption = {
     interval: 10,
     timeout: 3000,
+    url: 'https://www.gstatic.com/generate_204',
     lazy: true,
     'max-failed-times': 3,
     'empty-fallback': 'REJECT',

@@ -184,9 +184,8 @@
   
   // 策略组公共配置
   const groupBaseOption = {
-    interval: 600,
+    interval: 10,
     timeout: 3000,
-    url: 'https://g.cn/generate_204',
     lazy: true,
     'max-failed-times': 3,
     'empty-fallback': 'REJECT',
@@ -210,7 +209,7 @@
   const urlTestBaseOption = {
     ...groupBaseOption,
     type: 'url-test',
-    tolerance: 50,
+    tolerance: 10,
     'exclude-type': 'DIRECT',
     icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png',
     hidden: true,
@@ -559,6 +558,7 @@
       for (const region of regionDefinitions) {
         if (region.regex.test(proxy.name)) {
           regionGroups[region.name].proxies.push(proxy.name);
+          matched = true;
         }
       }
   
@@ -603,12 +603,12 @@
       {
         ...loadBalanceBaseOption,
         name: 'Balance',
-        proxies: ['HK'],
+        proxies: [...regionGroups['HK'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies, ...regionGroups['JP'].proxies],
       },
       {
         ...urlTestBaseOption,
         name: 'Auto',
-        proxies: ['HK'],
+        proxies: ['HK-Auto', 'TW-Auto', 'SG-Auto', 'JP-Auto'],
       },
     );
   

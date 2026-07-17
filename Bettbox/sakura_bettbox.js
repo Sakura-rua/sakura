@@ -184,11 +184,11 @@
   
   // 策略组公共配置
   const groupBaseOption = {
-    interval: 10,
-    timeout: 3000,
+    interval: 60,
+    timeout: 1000,
     url: 'https://www.gstatic.com/generate_204',
     lazy: true,
-    'max-failed-times': 3,
+    // 'max-failed-times': 3,
     'empty-fallback': 'REJECT',
   };
   
@@ -604,12 +604,12 @@
       {
         ...loadBalanceBaseOption,
         name: 'Balance',
-        proxies: [...regionGroups['HK'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies, ...regionGroups['JP'].proxies],
+        proxies: [...regionGroups['HK'].proxies, ...regionGroups['JP'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies],
       },
       {
         ...urlTestBaseOption,
         name: 'Auto',
-        proxies: ['HK-Auto', 'TW-Auto', 'SG-Auto', 'JP-Auto'],
+        proxies: ['HK-Auto', 'JP-Auto', 'TW-Auto', 'SG-Auto'],
       },
     );
   

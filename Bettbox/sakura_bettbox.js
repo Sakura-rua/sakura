@@ -608,7 +608,7 @@
       {
         ...selectBaseOption,
         name: 'Select',
-        proxies: ['Balance', 'Fallback', 'Auto', ...groupNamesOfSelect, 'DIRECT'],
+        proxies: ['Fallback', 'Balance', 'Auto', ...groupNamesOfSelect, 'DIRECT'],
         icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png',
       },
       {

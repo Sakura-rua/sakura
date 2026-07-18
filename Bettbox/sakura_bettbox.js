@@ -232,7 +232,7 @@
     type: 'fallback',
     strategy: 'sticky-sessions',
     'exclude-type': 'DIRECT',
-    icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png',
+    icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Stack.png',
     hidden: true,
   };
 
@@ -608,7 +608,7 @@
       {
         ...selectBaseOption,
         name: 'Select',
-        proxies: ['Balance', 'Auto', ...groupNamesOfSelect, 'DIRECT'],
+        proxies: ['Balance', 'Fallback', 'Auto', ...groupNamesOfSelect, 'DIRECT'],
         icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png',
       },
       {

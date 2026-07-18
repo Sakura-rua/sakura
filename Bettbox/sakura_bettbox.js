@@ -226,6 +226,16 @@
     hidden: true,
   };
   
+   // fallback策略组通用配置
+  const fallbackBaseOption = {
+    ...groupBaseOption,
+    type: 'fallback',
+    strategy: 'sticky-sessions',
+    'exclude-type': 'DIRECT',
+    icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png',
+    hidden: true,
+  };
+
   // 定义分流策略组配置
   const serviceConfigs = [
     {
@@ -602,6 +612,11 @@
         icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png',
       },
       {
+        ...fallbackBaseOptionBaseOption,
+        name: 'Fallback',
+        proxies: [...regionGroups['HK'].proxies, ...regionGroups['JP'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies],
+      },
+      {
         ...loadBalanceBaseOption,
         name: 'Balance',
         proxies: [...regionGroups['HK'].proxies, ...regionGroups['JP'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies],
@@ -624,7 +639,7 @@
       // 添加分流策略组对应的节点列表
       const groupProxies = svc.reject
         ? ['REJECT']
-        : ['Select', 'Balance', 'Auto', ...groupNamesOfSelect, 'DIRECT'];
+        : ['Select', 'Fallback', 'Balance', 'Auto', ...groupNamesOfSelect, 'DIRECT'];
 
       functionalGroups.push({
         ...(svc.reject
@@ -645,7 +660,7 @@
         ...selectBaseOption,
         name: 'Final',
         proxies: ['Select', 'DIRECT'],
-        icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Stack.png',
+        icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png',
       },
     );
   

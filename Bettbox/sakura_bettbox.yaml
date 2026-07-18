@@ -25,7 +25,7 @@ global_exclude_filter:
 
 # 订阅提供者，如果你想要添加多个订阅提供者，可以复制 provider1 的配置块，并修改 url 、 path 和 additional-prefix 字段。
 proxy-providers:
-  provider1:
+  p1:
     <<: [*proxy_providers_common, *global_exclude_filter]
     url: '' # 此处引号中间填入机场订阅链接
     # age-secret-key: '' # 此处填入机场订阅链接解密私钥，如果机场订阅链接需要解密才能使用，请将解密私钥填入引号中间，否则不要改动此项
@@ -33,13 +33,13 @@ proxy-providers:
     override:
       additional-prefix: 'p1 | ' # 给节点名称添加前缀，防止不同订阅的节点重名导致出现问题
 
-  provider2:
+  p2:
     <<: [*proxy_providers_common, *global_exclude_filter]
-    url: ''
-    age-secret-key: ''
+    url: '' # 此处引号中间填入机场订阅链接
+    # age-secret-key: '' # 此处填入机场订阅链接解密私钥，如果机场订阅链接需要解密才能使用，请将解密私钥填入引号中间，否则不要改动此项
     path: ./proxy_provider/provider2.yaml
     override:
-      additional-prefix: 'p2 | '
+      additional-prefix: 'p2 | ' # 给节点名称添加前缀，防止不同订阅的节点重名导致出现问题
 
 # 节点配置，可添加自定义节点
 proxies:
@@ -398,6 +398,22 @@ group_common:
       hidden: true,
     }
 
+  group_common_fallback:
+    &group_common_fallback {
+      type: fallback,
+      interval: 60,
+      timeout: 1000,
+      # max-failed-times: 3,
+      empty-fallback: REJECT,
+      url: 'https://g.cn/generate_204',
+      lazy: true,
+      strategy: 'sticky-sessions',
+      include-all: true,
+      exclude-type: 'DIRECT',
+      icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Stack.png',
+      hidden: true,
+    }
+
 # 通用代理节点组
 proxies_common:
   proxies_default:
@@ -405,6 +421,7 @@ proxies_common:
       proxies:
         [
           'Select',
+          'Fallback',
           'Balance',
           'Auto',
           'HK',
@@ -436,6 +453,7 @@ proxy-groups:
     <<: *group_common_select
     proxies:
       [
+        'Fallback',
         'Balance',
         'Auto',
         'HK',
@@ -444,15 +462,19 @@ proxy-groups:
         'SG',
         'TW',
         'Other',
+        'DIRECT',
       ]
     icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png'
 
+  - name: 'Fallback'
+    <<: [*group_common_fallback, *HK_filter]
+
   - name: 'Balance'
-    <<: [*group_common_load, *HK_filter, *JP_filter, *SG_filter, *TW_filter]
+    <<: [*group_common_load, *HK_filter]
 
   - name: 'Auto'
     <<: *group_common_auto
-    proxies: ['HK-Auto', 'JP-Auto', 'TW-Auto', 'SG-Auto']
+    proxies: ['HK-Auto', 'JP-Auto']
 
   - name: 'Telegram'
     default-selected: 'Auto'
@@ -524,7 +546,7 @@ proxy-groups:
   - name: 'Final'
     <<: *group_common_select
     proxies: ['Select', 'DIRECT']
-    icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Stack.png'
+    icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png'
 
   # 定义地区策略组
   - name: 'HK'

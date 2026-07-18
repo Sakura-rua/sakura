@@ -612,7 +612,7 @@
         icon: 'https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png',
       },
       {
-        ...fallbackBaseOptionBaseOption,
+        ...fallbackBaseOption,
         name: 'Fallback',
         proxies: [...regionGroups['HK'].proxies, ...regionGroups['JP'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies],
       },

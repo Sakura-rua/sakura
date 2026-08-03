@@ -614,7 +614,7 @@
       {
         ...fallbackBaseOption,
         name: 'Fallback',
-        proxies:[...filteredProxies],
+        proxies: [...filteredProxies.map(p => p.name)],
       },
       {
         ...loadBalanceBaseOption,

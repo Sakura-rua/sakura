@@ -614,7 +614,7 @@
       {
         ...fallbackBaseOption,
         name: 'Fallback',
-        proxies: [...regionGroups['HK'].proxies, ...regionGroups['JP'].proxies, ...regionGroups['TW'].proxies, ...regionGroups['SG'].proxies],
+        proxies,
       },
       {
         ...loadBalanceBaseOption,
@@ -624,7 +624,7 @@
       {
         ...urlTestBaseOption,
         name: 'Auto',
-        proxies: ['HK-Auto', 'JP-Auto', 'TW-Auto', 'SG-Auto'],
+        proxies: ['HK-Auto', 'JP-Auto'],
       },
     );
   

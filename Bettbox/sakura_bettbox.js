@@ -614,7 +614,7 @@
       {
         ...fallbackBaseOption,
         name: 'Fallback',
-        proxies,
+        proxies:[...filteredProxies],
       },
       {
         ...loadBalanceBaseOption,

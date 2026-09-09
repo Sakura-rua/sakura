@@ -719,7 +719,7 @@
       'enhanced-mode': 'fake-ip',
       'fake-ip-range': '198.18.0.1/16',
       'fake-ip-filter': ['rule-set:private', 'rule-set:fakeip_filter'],
-      'proxy-server-nameserver': [...chinaDNS, ...originalProxyServerNameserver],
+      'proxy-server-nameserver': originalProxyServerNameserver.length > 0 ? [...originalProxyServerNameserver] : [...chinaDNS],
       ...(Object.keys(originalPolicyNameserver).length > 0 && {
         'proxy-server-nameserver-policy': originalPolicyNameserver,
       }),

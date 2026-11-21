@@ -675,8 +675,8 @@
     // --- 添加基础配置 ---
   
     // ---DNS配置---
-  
-    // 读取订阅中的 DNS 配置，原配置里出现的所有 DNS 项都会尽量保留
+
+    // 读取订阅中的 DNS 配置：订阅里出现的项原样保留，订阅里没有的项不补本地默认值
     // 用以解决部分机场使用私有 DNS 导致无法解析节点的问题
     const originalDnsConfig =
       config.dns && typeof config.dns === 'object' && !Array.isArray(config.dns) ? config.dns : {};
@@ -690,7 +690,7 @@
     const isPlainObject = (value) =>
       value !== null && typeof value === 'object' && !Array.isArray(value);
 
-    // 按「去掉 #策略组 后缀」后的地址去重，保留订阅里先出现的写法
+    // 按「去掉 #策略组 后缀」后的地址去重
     const dedupeDns = (list) => {
       const seen = new Set();
       const result = [];
@@ -705,6 +705,16 @@
       }
       return result;
     };
+
+    // 订阅里有这一项才取，没有就返回空数组
+    const takeDnsList = (key) => dedupeDns(toArray(originalDnsConfig[key]));
+
+    // 列表非空时才把这一项写进 dns，空的不写
+    const withDnsList = (key, list) => (list.length > 0 ? { [key]: list } : {});
+
+    // default-nameserver 只接受 IP，DoH/DoT 地址会被过滤掉
+    const isIpAddress = (value) =>
+      /^\[?[0-9a-fA-F:.]+\]?(?::\d+)?$/.test(String(value)) && /[0-9]/.test(String(value));
 
     // 收集所有节点域名
     const proxyDomains = new Set(
@@ -730,18 +740,6 @@
       }
     }
 
-    // 国内外 DNS 定义
-    const chinaDNS = ['https://dns.alidns.com/dns-query#DIRECT', 'https://doh.pub/dns-query#DIRECT'];
-    const foreignDNS = ['https://dns.cloudflare.com/dns-query#Select', 'https://dns.google/dns-query#Select'];
-
-    // 列表型 DNS：订阅里已有的全部保留并排在最前，缺失的用默认值补齐
-    const mergeDnsList = (key, defaults) => dedupeDns([...toArray(originalDnsConfig[key]), ...defaults]);
-
-    // default-nameserver 只接受 IP，订阅里的 DoH/DoT 地址会被过滤掉
-    const isIpAddress = (value) =>
-      /^\[?[0-9a-fA-F:.]+\]?(?::\d+)?$/.test(String(value)) && /[0-9]/.test(String(value));
-    const defaultNameserver = mergeDnsList('default-nameserver', ['223.5.5.5', '119.29.29.29']).filter(isIpAddress);
-
     const dnsConfig = {
       // 以下为本地强制接管项，本配置依赖 fake-ip 模式运行
       enable: true,
@@ -752,21 +750,23 @@
       'fake-ip-range': '198.18.0.1/16',
       'cache-algorithm': 'arc',
 
-      // fake-ip-filter：订阅与本地的过滤项合并
-      'fake-ip-filter': mergeDnsList('fake-ip-filter', ['rule-set:private', 'rule-set:fakeip_filter']),
+      // fake-ip-filter 额外带上 rule-set：本配置的规则集依赖它，不能丢
+      'fake-ip-filter': dedupeDns([
+        ...toArray(originalDnsConfig['fake-ip-filter']),
+        'rule-set:private',
+        'rule-set:fakeip_filter',
+      ]),
 
-      'default-nameserver': defaultNameserver.length > 0 ? defaultNameserver : ['223.5.5.5', '119.29.29.29'],
-      nameserver: mergeDnsList('nameserver', [...foreignDNS]),
-      'proxy-server-nameserver': mergeDnsList('proxy-server-nameserver', [...chinaDNS]),
-      'direct-nameserver': mergeDnsList('direct-nameserver', ['system', '223.5.5.5', '119.29.29.29']),
+      // 订阅里有哪几项就写哪几项，订阅里没有的不补默认值
+      ...withDnsList('default-nameserver', takeDnsList('default-nameserver').filter(isIpAddress)),
+      ...withDnsList('nameserver', takeDnsList('nameserver')),
+      ...withDnsList('proxy-server-nameserver', takeDnsList('proxy-server-nameserver')),
+      ...withDnsList('direct-nameserver', takeDnsList('direct-nameserver')),
 
-      // nameserver-policy：订阅里的策略全部保留（与默认项同名时以订阅为准）
-      'nameserver-policy': {
-        'rule-set:cn': [...chinaDNS],
-        ...originalNameserverPolicy,
-      },
-
-      // 节点域名专用解析策略
+      // 策略表：订阅给了才写；节点域名相关项额外并入 proxy-server-nameserver-policy
+      ...(Object.keys(originalNameserverPolicy).length > 0 && {
+        'nameserver-policy': { ...originalNameserverPolicy },
+      }),
       ...((Object.keys(proxyDomainPolicy).length > 0 || Object.keys(originalProxyNameserverPolicy).length > 0) && {
         'proxy-server-nameserver-policy': {
           ...proxyDomainPolicy,

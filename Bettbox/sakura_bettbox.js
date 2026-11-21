@@ -676,61 +676,114 @@
   
     // ---DNS配置---
   
-    // 读取订阅中的 DNS 配置，保留订阅中的私有 DNS
+    // 读取订阅中的 DNS 配置，原配置里出现的所有 DNS 项都会尽量保留
     // 用以解决部分机场使用私有 DNS 导致无法解析节点的问题
-    const originalDnsConfig = config.dns || {};
-  
-    // 过滤常见的公共 DNS
-    const commonDnsRegex =
-      /(223\.5\.5\.5|223\.6\.6\.6|119\.29\.29\.29|1\.12\.12\.12|120\.53\.53\.53|114\.114\.114\.114|180\.76\.76\.76|1\.1\.1\.1|1\.0\.0\.1|8\.8\.8\.8|8\.8\.4\.4|94\.140\.14\.14|94\.140\.15\.15|127\.0\.0\.1|alidns|doh\.pub|dot\.pub|dnspod|dns\.baidu|dns\.google|cloudflare|adguard|system)/i;
-  
-    const originalProxyServerNameserver = (originalDnsConfig['proxy-server-nameserver'] || []).filter(
-      (dns) => !commonDnsRegex.test(String(dns)),
-    );
-  
+    const originalDnsConfig =
+      config.dns && typeof config.dns === 'object' && !Array.isArray(config.dns) ? config.dns : {};
+
+    // 把「单个值 / 数组」统一转成数组，兼容不规范的订阅写法
+    const toArray = (value) => {
+      if (value === undefined || value === null) return [];
+      return Array.isArray(value) ? value.flat(Infinity) : [value];
+    };
+
+    const isPlainObject = (value) =>
+      value !== null && typeof value === 'object' && !Array.isArray(value);
+
+    // 按「去掉 #策略组 后缀」后的地址去重，保留订阅里先出现的写法
+    const dedupeDns = (list) => {
+      const seen = new Set();
+      const result = [];
+      for (const item of toArray(list)) {
+        if (item === undefined || item === null) continue;
+        const text = String(item).trim();
+        if (!text) continue;
+        const key = text.replace(/#.*$/, '').toLowerCase();
+        if (seen.has(key)) continue;
+        seen.add(key);
+        result.push(text);
+      }
+      return result;
+    };
+
     // 收集所有节点域名
     const proxyDomains = new Set(
       filteredProxies.filter((proxy) => typeof proxy.server === 'string').map((proxy) => proxy.server.toLowerCase()),
     );
-  
-    // 提取节点域名对应的 DNS 配置
-    const originalPolicyNameserver = {};
-    for (const policy of [
-      originalDnsConfig['nameserver-policy'] || {},
-      originalDnsConfig['proxy-server-nameserver-policy'] || {},
-    ]) {
+
+    // 订阅中的 DNS 策略表
+    const originalNameserverPolicy = isPlainObject(originalDnsConfig['nameserver-policy'])
+      ? originalDnsConfig['nameserver-policy']
+      : {};
+    const originalProxyNameserverPolicy = isPlainObject(originalDnsConfig['proxy-server-nameserver-policy'])
+      ? originalDnsConfig['proxy-server-nameserver-policy']
+      : {};
+
+    // 提取节点域名对应的 DNS 配置，单独放进 proxy-server-nameserver-policy
+    // 避免节点域名被 fake-ip 或公共 DNS 解析到错误地址
+    const proxyDomainPolicy = {};
+    for (const policy of [originalNameserverPolicy, originalProxyNameserverPolicy]) {
       for (const [domain, dns] of Object.entries(policy)) {
         if (proxyDomains.has(domain.toLowerCase())) {
-          originalPolicyNameserver[domain] = dns;
+          proxyDomainPolicy[domain] = dns;
         }
       }
     }
-  
+
     // 国内外 DNS 定义
     const chinaDNS = ['https://dns.alidns.com/dns-query#DIRECT', 'https://doh.pub/dns-query#DIRECT'];
     const foreignDNS = ['https://dns.cloudflare.com/dns-query#Select', 'https://dns.google/dns-query#Select'];
-  
-    newConfig['dns'] = {
+
+    // 列表型 DNS：订阅里已有的全部保留并排在最前，缺失的用默认值补齐
+    const mergeDnsList = (key, defaults) => dedupeDns([...toArray(originalDnsConfig[key]), ...defaults]);
+
+    // default-nameserver 只接受 IP，订阅里的 DoH/DoT 地址会被过滤掉
+    const isIpAddress = (value) =>
+      /^\[?[0-9a-fA-F:.]+\]?(?::\d+)?$/.test(String(value)) && /[0-9]/.test(String(value));
+    const defaultNameserver = mergeDnsList('default-nameserver', ['223.5.5.5', '119.29.29.29']).filter(isIpAddress);
+
+    const dnsConfig = {
+      // 以下为本地强制接管项，本配置依赖 fake-ip 模式运行
       enable: true,
       ipv6: true,
       'use-hosts': true,
-      'cache-algorithm': 'arc',
       'use-system-hosts': true,
       'enhanced-mode': 'fake-ip',
       'fake-ip-range': '198.18.0.1/16',
-      'fake-ip-filter': ['rule-set:private', 'rule-set:fakeip_filter'],
-      'proxy-server-nameserver': originalProxyServerNameserver.length > 0 ? [...originalProxyServerNameserver] : [...chinaDNS],
-      ...(Object.keys(originalPolicyNameserver).length > 0 && {
-        'proxy-server-nameserver-policy': originalPolicyNameserver,
-      }),
-      'default-nameserver': ['223.5.5.5', '119.29.29.29'],
-      nameserver: [...foreignDNS],
+      'cache-algorithm': 'arc',
+
+      // fake-ip-filter：订阅与本地的过滤项合并
+      'fake-ip-filter': mergeDnsList('fake-ip-filter', ['rule-set:private', 'rule-set:fakeip_filter']),
+
+      'default-nameserver': defaultNameserver.length > 0 ? defaultNameserver : ['223.5.5.5', '119.29.29.29'],
+      nameserver: mergeDnsList('nameserver', [...foreignDNS]),
+      'proxy-server-nameserver': mergeDnsList('proxy-server-nameserver', [...chinaDNS]),
+      'direct-nameserver': mergeDnsList('direct-nameserver', ['system', '223.5.5.5', '119.29.29.29']),
+
+      // nameserver-policy：订阅里的策略全部保留（与默认项同名时以订阅为准）
       'nameserver-policy': {
         'rule-set:cn': [...chinaDNS],
+        ...originalNameserverPolicy,
       },
-      'direct-nameserver': ['system', '223.5.5.5', '119.29.29.29'],
+
+      // 节点域名专用解析策略
+      ...((Object.keys(proxyDomainPolicy).length > 0 || Object.keys(originalProxyNameserverPolicy).length > 0) && {
+        'proxy-server-nameserver-policy': {
+          ...proxyDomainPolicy,
+          ...originalProxyNameserverPolicy,
+        },
+      }),
     };
-  
+
+    // 订阅中其余 DNS 项（fallback、fallback-filter、respect-rules、geodata-mode 等）原样保留
+    for (const [key, value] of Object.entries(originalDnsConfig)) {
+      if (!(key in dnsConfig)) {
+        dnsConfig[key] = value;
+      }
+    }
+
+    newConfig['dns'] = dnsConfig;
+
     // ---hosts 配置---
   
     // 提取订阅 hosts 中与节点域名对应的记录
